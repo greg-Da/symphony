@@ -1,0 +1,29 @@
+Name : Name
+
+Upload Photo : "Upload Photo"
+
+Quantity : Quantity
+
+Price: Price
+
+Sauvegarder: Save
+
+Produit: Products
+
+Delete: Delete
+
+table:
+    name: Name
+    quantity: Quantity
+    price: Price
+
+
+panier:
+    title: "Cart"
+    date: "Created at :"
+    productTotal: "products in the cart"
+
+produit:
+    title: "Products"
+    create: "Create product"
+    addCart: "Select quantity to add to cart"

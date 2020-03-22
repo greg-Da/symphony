@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PanierController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+<h1>{{'panier.title'|trans}}</h1>
+  {% if paniers is not empty %}
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>{{'table.name'|trans}}</th>
+          <th>{{'table.quantity'|trans}}</th>
+          <th>{{'table.price'|trans}}</th>
+          <th>Photo</th>
+          <th>{{'panier.date'|trans}}</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% set x = 0 %}
+      {% for panier in paniers %}
+          <tr>
+            <td>{{ panier.produit }}</td>
+            <td>{{ panier.quantity }}</td>
+            <td>{{ panier.produit.price * panier.quantity }}€</td>
+            {% if panier.produit.pic != null %}
+              <td><img class="imgS" src="{{ asset('/uploads/'~ panier.produit.pic) }}"></td>
+            {% endif %}
+            <td>{{ panier.createdAt ? panier.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            <td><a class="btn btn-danger" href="{{ path('delete_panier', {'id':panier.id}) }}">{{'Delete'|trans}}</a></td>
+          {% set x = x + panier.produit.price * panier.quantity %}
+        {% endfor %}
+      </tbody>
+    </table>
+    <hr>
+    <div style="display: flex">
+    <p class="mr-5">{{ paniers|length}} {{'Produit'|trans}}</p>
+    <p>Total : {{ x }}€</p>
+    </div>
+  {% else %}
+    <p>Il n'y a rien dans le panier.
+  {% endif %}
+
+</div>
+{% endblock %}

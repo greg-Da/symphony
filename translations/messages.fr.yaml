@@ -1,0 +1,29 @@
+Name : Nom
+
+Upload Photo : "Télécharger une photo"
+
+Quantity: Quantité
+
+Price: Prix
+
+Sauvegarder: Sauvegarder
+
+Produit: Produit
+
+Delete: Supprimer
+
+table:
+    name: Nom
+    quantity: Quantité
+    price: Prix
+
+
+panier:
+    title: "Panier"
+    date: "Créer le :"
+    productTotal: "produits dans le panier"
+
+produit:
+    title: "Produits"
+    create: "Créer un produit"
+    addCart: "Selectioner la quantité à ajouter"

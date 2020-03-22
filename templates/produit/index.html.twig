@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProduitController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+
+  <h1>{{'produit.title'|trans }}</h1>
+  {% if produits is not empty %}
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>{{'table.name'|trans}}</th>
+          <th>{{'table.quantity'|trans}}</th>
+          <th>{{'table.price'|trans}}</th>
+          <th>Action</th>
+          <th>Photo</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for produit in produits %}
+          <tr>
+            <td><a href="{{ path('un_produit', {'id':produit.id}) }}">{{ produit.name }}</a></td>
+            <td>{{ produit.quantity }}</td>
+            <td>{{ produit.price }}€</td>
+            <td><a href="{{ path('delete_produit', {'id':produit.id}) }}">{{'Delete'|trans}}</a></td>
+            {% if produit.pic != null %}
+              <td><img class="imgS" src="{{ asset('/uploads/'~ produit.pic) }}"></td>
+            {% endif %}
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <hr>
+  {% else %}
+    <p>Il n'y a aucun produits.
+  {% endif %}
+
+  {{ form(form_ajout) }}
+
+</div>
+{% endblock %}
